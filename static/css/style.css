@@ -47,10 +47,16 @@ body.dark-theme {
 }
 
 .scramble-text {
-    font-size: 1.5rem;
-    color: var(--secondary-text-color);
-    margin-bottom: 2rem;
-    min-height: 2.5rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 2rem auto;
+    min-height: 3rem;
+    padding: 1rem;
+    background: var(--surface-color);
+    border-radius: 8px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stats-container {

@@ -106,16 +106,31 @@ class SpeedTimer {
             sorted.pop();
             sorted.shift();
             return sorted.reduce((a, b) => a + b, 0) / 10;
+        } else if (n === -1) { // Session average
+            return times.reduce((a, b) => a + b, 0) / times.length;
         }
         return null;
     }
 
+    getBestSolve() {
+        if (this.times.length === 0) return null;
+        return Math.min(...this.times);
+    }
+
+    getSessionAverage() {
+        return this.calculateAverage(this.times, -1);
+    }
+
     updateStats() {
         const lastTime = this.times[this.times.length - 1];
+        const bestSolve = this.getBestSolve();
+        const sessionAvg = this.getSessionAverage();
         const ao5 = this.calculateAverage(this.times, 5);
         const ao12 = this.calculateAverage(this.times, 12);
 
         this.lastTimeDisplay.textContent = lastTime ? lastTime.toFixed(2) : '-';
+        document.getElementById('bestSolve').textContent = bestSolve ? bestSolve.toFixed(2) : '-';
+        document.getElementById('sessionAvg').textContent = sessionAvg ? sessionAvg.toFixed(2) : '-';
         this.ao5Display.textContent = ao5 ? ao5.toFixed(2) : '-';
         this.ao12Display.textContent = ao12 ? ao12.toFixed(2) : '-';
     }

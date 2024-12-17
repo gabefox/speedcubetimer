@@ -17,10 +17,20 @@ def index():
 def export_csv():
     si = StringIO()
     writer = csv.writer(si)
-    writer.writerow(['Solve Number', 'Time (seconds)', 'Date'])
     
     times = request.form.get('times', '[]')
     times = json.loads(times)
+    
+    # Calculate statistics
+    best_solve = min(times) if times else 0
+    session_avg = sum(times) / len(times) if times else 0
+    
+    # Write header and statistics
+    writer.writerow(['Speedcubing Session Statistics'])
+    writer.writerow(['Best Solve', f"{best_solve:.2f}"])
+    writer.writerow(['Session Average', f"{session_avg:.2f}"])
+    writer.writerow([])  # Empty row for spacing
+    writer.writerow(['Solve Number', 'Time (seconds)', 'Date'])
     
     for i, time in enumerate(times, 1):
         writer.writerow([i, f"{time:.2f}", datetime.now().strftime('%Y-%m-%d')])
@@ -36,9 +46,28 @@ def export_pdf():
     pdf = FPDF()
     pdf.add_page()
     
+    times = request.form.get('times', '[]')
+    times = json.loads(times)
+    
+    # Calculate statistics
+    best_solve = min(times) if times else 0
+    session_avg = sum(times) / len(times) if times else 0
+    
     # Set up PDF styling
-    pdf.set_font('Arial', 'B', 16)
-    pdf.cell(0, 10, 'Speedcubing Solve Times', ln=True, align='C')
+    pdf.set_font('Arial', 'B', 20)
+    pdf.cell(0, 15, 'Speedcubing Session Report', ln=True, align='C')
+    
+    # Add statistics
+    pdf.set_font('Arial', 'B', 14)
+    pdf.cell(0, 10, 'Session Statistics', ln=True)
+    pdf.set_font('Arial', '', 12)
+    pdf.cell(60, 8, f'Best Solve: {best_solve:.2f}s', ln=True)
+    pdf.cell(60, 8, f'Session Average: {session_avg:.2f}s', ln=True)
+    pdf.ln(5)
+    
+    # Add solve times table
+    pdf.set_font('Arial', 'B', 14)
+    pdf.cell(0, 10, 'Solve Times', ln=True)
     pdf.set_font('Arial', '', 12)
     
     # Add header
@@ -46,6 +75,13 @@ def export_pdf():
     pdf.cell(60, 10, 'Time (seconds)', 1)
     pdf.cell(70, 10, 'Date', 1)
     pdf.ln()
+    
+    # Add solve times
+    for i, time in enumerate(times, 1):
+        pdf.cell(60, 10, str(i), 1)
+        pdf.cell(60, 10, f"{time:.2f}", 1)
+        pdf.cell(70, 10, datetime.now().strftime('%Y-%m-%d'), 1)
+        pdf.ln()
     
     # Create the PDF
     pdf_output = pdf.output(dest='S').encode('latin-1')
