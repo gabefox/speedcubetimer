@@ -1,9 +1,25 @@
-:root {
-    --background-color: #121212;
-    --surface-color: #1e1e1e;
-    --primary-color: #00ff9d;
-    --text-color: #ffffff;
-    --secondary-text-color: #b3b3b3;
+:root[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --surface-color: #2d2d2d;
+  --text-color: #ffffff;
+  --accent-color: #00ff9d;
+  --timer-color: #00ff9d;
+  --ready-color: #ffd700;
+  --running-color: #ff3e3e;
+  --toggle-bg: #4a4a4a;
+  --toggle-circle: #00ff9d;
+}
+
+:root[data-theme="light"] {
+  --background-color: #f5f5f5;
+  --surface-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #009688;
+  --timer-color: #009688;
+  --ready-color: #ffa000;
+  --running-color: #d32f2f;
+  --toggle-bg: #e0e0e0;
+  --toggle-circle: #009688;
 }
 
 body.dark-theme {
@@ -27,7 +43,7 @@ body.dark-theme {
     font-family: 'DSEG7 Classic', monospace;
     font-size: 10rem;
     font-weight: 400;
-    color: #00ff9d;
+    color: var(--timer-color);
     text-shadow: 
         0 0 5px rgba(0, 255, 157, 0.2),
         0 0 10px rgba(0, 255, 157, 0.3),
@@ -48,7 +64,7 @@ body.dark-theme {
 
 .scramble-text {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
     margin: 2rem auto;
     min-height: 3rem;
     padding: 1rem;
@@ -82,7 +98,7 @@ body.dark-theme {
 
 .stat-value {
     font-size: 1.2rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .chart-container {
@@ -96,7 +112,7 @@ body.dark-theme {
 }
 
 .timer-ready {
-    color: #ff3e3e;
+    color: var(--ready-color);
     text-shadow: 0 0 10px rgba(255, 62, 62, 0.5);
 }
 
@@ -113,16 +129,47 @@ body.dark-theme {
 
 .export-btn {
     background-color: var(--surface-color);
-    color: var(--primary-color);
+    color: var(--accent-color);
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--accent-color);
 }
 
 .export-btn:hover {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.theme-toggle-btn {
+    background-color: var(--toggle-bg);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
     color: var(--background-color);
 }
 

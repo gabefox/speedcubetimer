@@ -10,7 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/dseg7.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
-<body class="dark-theme">
+<body>
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-toggle-btn">
+            <i data-feather="sun"></i>
+        </button>
+    </div>
     <div class="container-fluid">
         <div class="row main-content">
             <div class="col-12 text-center">
@@ -58,5 +63,6 @@
     <script src="{{ url_for('static', filename='js/scramble.js') }}"></script>
     <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </body>
 </html>
