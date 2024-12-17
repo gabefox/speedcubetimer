@@ -156,6 +156,18 @@ document.addEventListener('DOMContentLoaded', () => {
             updateChart(timer.times);
         }
     });
+
+    // Add reset session functionality
+    const resetBtn = document.getElementById('resetSession');
+    resetBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset the session? This will delete all times.')) {
+            timer.times = [];
+            localStorage.setItem('solveTimes', JSON.stringify(timer.times));
+            timer.updateStats();
+            updateChart(timer.times);
+            timer.generateNewScramble();
+        }
+    });
 });
 
 // Add event listeners for export buttons

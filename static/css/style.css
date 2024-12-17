@@ -140,10 +140,15 @@ body.dark-theme {
     }
 }
 
-.delete-btn {
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+.delete-btn, .reset-btn {
     background-color: var(--surface-color);
-    color: #ff3e3e;
-    border: 1px solid #ff3e3e;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
@@ -152,11 +157,25 @@ body.dark-theme {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 1rem auto;
+}
+
+.delete-btn {
+    color: #ff3e3e;
+    border: 1px solid #ff3e3e;
+}
+
+.reset-btn {
+    color: #ffa500;
+    border: 1px solid #ffa500;
 }
 
 .delete-btn:hover {
     background-color: #ff3e3e;
+    color: var(--background-color);
+}
+
+.reset-btn:hover {
+    background-color: #ffa500;
     color: var(--background-color);
 }
 
