@@ -142,6 +142,22 @@ class SpeedTimer {
 
 const timer = new SpeedTimer();
 
+// Initialize Feather icons
+document.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
+    
+    // Add delete last solve functionality
+    const deleteBtn = document.getElementById('deleteLastSolve');
+    deleteBtn.addEventListener('click', () => {
+        if (timer.times.length > 0) {
+            timer.times.pop();
+            localStorage.setItem('solveTimes', JSON.stringify(timer.times));
+            timer.updateStats();
+            updateChart(timer.times);
+        }
+    });
+});
+
 // Add event listeners for export buttons
 document.querySelectorAll('.export-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {

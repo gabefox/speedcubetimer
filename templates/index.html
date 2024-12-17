@@ -16,6 +16,7 @@
             <div class="col-12 text-center">
                 <div id="scramble" class="scramble-text"></div>
                 <div id="timer" class="timer-display">0.00</div>
+                <button id="deleteLastSolve" class="delete-btn"><i data-feather="trash-2"></i> Delete Last Solve</button>
                 <div class="stats-container">
                     <div class="stat-box">
                         <div class="stat-label">Last Time</div>
@@ -50,6 +51,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="{{ url_for('static', filename='js/scramble.js') }}"></script>
     <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chart.js') }}"></script>

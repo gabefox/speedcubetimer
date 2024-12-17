@@ -139,3 +139,28 @@ body.dark-theme {
         font-size: 1.2rem;
     }
 }
+
+.delete-btn {
+    background-color: var(--surface-color);
+    color: #ff3e3e;
+    border: 1px solid #ff3e3e;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem auto;
+}
+
+.delete-btn:hover {
+    background-color: #ff3e3e;
+    color: var(--background-color);
+}
+
+.delete-btn svg {
+    width: 16px;
+    height: 16px;
+}
