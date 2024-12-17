@@ -85,6 +85,28 @@ body.dark-theme {
     font-size: 10rem;
 }
 
+.export-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.export-btn {
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary-color);
+}
+
+.export-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
 @media (max-width: 768px) {
     .timer-display {
         font-size: 4rem;

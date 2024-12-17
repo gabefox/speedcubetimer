@@ -119,6 +119,36 @@ class SpeedTimer {
         this.ao5Display.textContent = ao5 ? ao5.toFixed(2) : '-';
         this.ao12Display.textContent = ao12 ? ao12.toFixed(2) : '-';
     }
+
+    getTimesData() {
+        return this.times;
+    }
 }
 
 const timer = new SpeedTimer();
+
+// Add event listeners for export buttons
+document.querySelectorAll('.export-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const timesData = timer.getTimesData();
+        const formData = new FormData();
+        formData.append('times', JSON.stringify(timesData));
+        
+        fetch(this.href, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = this.href.includes('csv') ? 'solve_times.csv' : 'solve_times.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        });
+    });
+});
