@@ -1,0 +1,100 @@
+:root {
+    --background-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #00ff9d;
+    --text-color: #ffffff;
+    --secondary-text-color: #b3b3b3;
+}
+
+body.dark-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-display {
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+    margin: 2rem 0;
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+}
+
+.scramble-text {
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 2rem;
+    min-height: 2.5rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-box {
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 120px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+    height: 300px;
+}
+
+.timer-ready {
+    color: #ff3e3e;
+    text-shadow: 0 0 10px rgba(255, 62, 62, 0.5);
+}
+
+.timer-running {
+    font-size: 10rem;
+}
+
+@media (max-width: 768px) {
+    .timer-display {
+        font-size: 4rem;
+    }
+    
+    .timer-running {
+        font-size: 5rem;
+    }
+    
+    .scramble-text {
+        font-size: 1.2rem;
+    }
+}

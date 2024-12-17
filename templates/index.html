@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedcubing Timer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="container-fluid">
+        <div class="row main-content">
+            <div class="col-12 text-center">
+                <div id="scramble" class="scramble-text"></div>
+                <div id="timer" class="timer-display">0.00</div>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-label">Last Time</div>
+                        <div id="lastTime" class="stat-value">-</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Ao5</div>
+                        <div id="ao5" class="stat-value">-</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Ao12</div>
+                        <div id="ao12" class="stat-value">-</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="solveChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/scramble.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+</body>
+</html>
